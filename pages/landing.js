@@ -1,12 +1,13 @@
 import React from 'react'
-import { StyleSheet,View, ScrollView,Text} from 'react-native';
+import Login from '../components/login'
+import { StyleSheet, View, ScrollView, Text } from 'react-native';
 
 export default class Home extends React.Component {
     render() {
         return (
             <ScrollView>
                 <View style={styles.container}>
-                    <Text>Login</Text>
+                    <Login></Login>
                 </View>
             </ScrollView>
         )
