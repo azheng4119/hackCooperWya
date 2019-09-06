@@ -18,7 +18,8 @@
     "react-native-maps": "^0.25.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-vector-icons": "^6.6.0",
-    "react-native-web": "^0.11.4"
+    "react-native-web": "^0.11.4",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^6.0.0"

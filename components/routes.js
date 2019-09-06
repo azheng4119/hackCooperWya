@@ -7,8 +7,8 @@ import Map from '../pages/map'
 const Routes = (props) => (
    <Router cardStyle={{ backgroundColor: 'white' }}>
       <ScrollView>
-         <Scene type="reset" key="landing" component={Landing} title="Login"  /> 
-         <Scene type="reset" key="" component={Map} title="Map" initial={true} /> 
+         <Scene type="reset" key="landing" component={Landing} title="Login" initial={true} /> 
+         <Scene type="reset" key="" component={Map} title="Map"  /> 
 
       </ScrollView>
    </Router>
