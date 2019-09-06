@@ -1,12 +1,13 @@
 import React from 'react';
+import Routes from './components/routes'
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>4324554454s</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <Routes></Routes>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
