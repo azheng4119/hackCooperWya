@@ -17,16 +17,12 @@ export default class Register extends React.Component {
             <View style={styles.container}>
                 <FormLabel><Text>First Name</Text></FormLabel>
                 <FormInput />
-                <FormValidationMessage>Error message</FormValidationMessage>
                 <FormLabel><Text>Last Name</Text></FormLabel>
                 <FormInput />
-                <FormValidationMessage>Error message</FormValidationMessage>
                 <FormLabel><Text>Username</Text></FormLabel>
                 <FormInput />
-                <FormValidationMessage>Error message</FormValidationMessage>
                 <FormLabel><Text>Password</Text></FormLabel>
                 <FormInput/>
-                <FormValidationMessage>Error message</FormValidationMessage>
                 <TouchableOpacity onPress = {() =>Actions.home()}><Text>Submit</Text></TouchableOpacity>
             </View>
         )

@@ -64,14 +64,7 @@ class Login extends React.Component {
                     ><Text style={{ padding: 10, color: 'white' }}>Login</Text></Button>
                 </View>
                 <View style={{ margin: 10, alignItems: 'center', textAlign: 'center' }}>
-                    <Button style={{ width: '50%' }}
-                        onPress={() => this.random()}
-                    ><Text style={{ padding: 10, color: 'white' }}>test</Text></Button>
-                </View>
-                <View style={{ margin: 10, alignItems: 'center', textAlign: 'center' }}>
-                    <Button style={{ width: '50%' }}
-                        onPress={() => Actions.register()}
-                    ><Text style={{ padding: 10, color: 'white' }}>signup</Text></Button>
+                    <Text style={{ padding: 10, color: 'black', fontSize:10 }}>Don't have an account? <Text onPress={() => Actions.register()} style={{ padding: 10, color: 'blue' }}>Register!</Text></Text>
                 </View>
             </View>
         )
