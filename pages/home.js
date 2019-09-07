@@ -33,11 +33,13 @@ class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <View style={styles.topBar}>
                 <View style={styles.avatarCard}>
                     <Image style={styles.avatar} source={require('../assets/pikachu.png')} />
                     <Text>{this._isMounted? this.state.user.user.firstname + " " + this.state.user.user.lastname: ""} </Text>
                 </View>
-                <View>
+                </View>
+                <View style={{width:'100%'}}>
                     <RoomCard code="123"></RoomCard>
                 </View>
             </View>
@@ -50,7 +52,14 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#F2F0F0'
+    },
+    topBar: {
+        marginTop: '5%',
+        width: '100%',
+        backgroundColor: 'white',
+        
     },
     avatarCard: {
         marginTop: 5,
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     avatar: {
+        marginLeft: 20,
         width: 70,
         height: 70,
         overflow: "hidden",
