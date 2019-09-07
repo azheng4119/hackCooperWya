@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import { connect } from "react-redux";
-import { loginThunk, getUserThunk} from '../store/utilities/currentuser';
+import { loginThunk, getUserThunk } from '../store/utilities/currentuser';
 import { Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
@@ -18,19 +18,25 @@ class Login extends React.Component {
     async componentDidMount(){
     
     }
-    submit = () => {
-        const user = {
-            "username": this.state.username,
-            "password": this.state.password
+    submit = async () => {
+        try {
+            const user = {
+                "username": this.state.username,
+                "password": this.state.password
+            }
+            this.props.login(user);
+            Actions.home();
         }
-        this.props.login(user);
+        catch (err) {
+            console.log(err)
+        }
     }
 
-    random = () =>{
-        try{
+    random = () => {
+        try {
             this.props.getUser();
             console.log(this.props.user)
-        }catch (err){
+        } catch (err) {
             console.log(err);
         }
 
@@ -60,7 +66,11 @@ class Login extends React.Component {
                         onPress={() => this.random()}
                     ><Text style={{ padding: 10, color: 'white' }}>test</Text></Button>
                 </View>
-
+                <View style={{ margin: 10, alignItems: 'center', textAlign: 'center' }}>
+                    <Button style={{ width: '50%' }}
+                        onPress={() => Actions.register()}
+                    ><Text style={{ padding: 10, color: 'white' }}>signup</Text></Button>
+                </View>
             </View>
         )
     }
@@ -77,8 +87,7 @@ const styles = StyleSheet.create({
 
 const mapState = (state) => {
     return {
-        user : state.user,
-        logError: !!state.user.error
+        user: state.user
     }
 }
 

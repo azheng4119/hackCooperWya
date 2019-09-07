@@ -66,7 +66,7 @@ export default class app extends React.Component {
                         password: text
                     })} />
                     <FormValidationMessage>Error message</FormValidationMessage>
-                    <TouchableOpacity onPress={(() => this.signUp)}><Text>Sign Up</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={(() => Actions.landing())}><Text>Sign Up</Text></TouchableOpacity>
                 </View>
             </ScrollView>
         )
