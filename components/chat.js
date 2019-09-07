@@ -39,15 +39,14 @@ class chat extends React.Component {
     }
     componentWillUnmount() {
         this._isMounted = false;
-        this.props.getUser();
     }
     sendMessage = (msg) => {
         if (msg === "") return;
-        let mess = this.props.user.user.firstname + " " + this.props.user.user.lastname + ": " + msg
+        let mess = this.props.user.user.firstname + ": " + msg
         this.socket.emit("chat message", mess);
         if (this._isMounted) {
             this.setState({
-                chats: [...this.state.chats, mess],
+             chats: [...this.state.chats, mess],
                 message: ""
             })
         }
@@ -63,7 +62,7 @@ class chat extends React.Component {
         return (
             <KeyboardAvoidingView behavior="padding" enabled style={{ width: '100%' }}>
                 <View style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingBottom: 20 }}>
-                    {this.state.hide ? <View /> : <View style={{ width: '100%', height: 200 }}><ScrollView style={{ padding: 10, alignSelf: 'center', width: '70%', backgroundColor: 'white', borderRadius: 15 }}>{messages}</ScrollView></View>}
+                    {this.state.hide ? <View /> : <View style={{ width: '100%', height: 200 }}><ScrollView style={{ padding: 20, alignSelf: 'center', width: '70%', backgroundColor: 'white', borderRadius: 15 }}>{messages}</ScrollView></View>}
                     <Card>
                         <CardItem>
                             <TouchableOpacity onPress={() => this.setState({ hide: !this.state.hide })}>

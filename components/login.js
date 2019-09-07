@@ -25,6 +25,7 @@ class Login extends React.Component {
                 "password": this.state.password
             }
             await this.props.login(user);
+            console.log(this.props.user)
             if(this.props.user.token){
                 Actions.home();
             }
@@ -37,7 +38,7 @@ class Login extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Wya</Text>
+
                 <FormLabel><Text>Username</Text></FormLabel>
                 <FormInput autoCapitalize="none" onChangeText={(text) => this.setState({
                     username: text
@@ -45,6 +46,7 @@ class Login extends React.Component {
 
                 <FormLabel><Text>Password</Text></FormLabel>
                 <FormInput 
+                secureTextEntry = {true}
                 onSubmitEditing={() => this.submit()}
                 autoCapitalize="none" 
                 onChangeText={(text) => this.setState({
@@ -57,7 +59,7 @@ class Login extends React.Component {
                     ><Text style={{ padding: 10, color: 'white' }}>Login</Text></Button>
                 </View>
                 <View style={{ margin: 10, alignItems: 'center', textAlign: 'center' }}>
-                    <Text style={{ padding: 10, color: 'black', fontSize:10 }}>Don't have an account? <Text onPress={() => Actions.register()} style={{ padding: 10, color: 'blue' }}>Register!</Text></Text>
+                    <Text style={{ padding: 10, color: 'black', fontSize:10 }}>Don't have an account? <Text onPress={() => Actions.register()} style={{ padding: 10, color: 'blue', fontSize : 30}}>Register!</Text></Text>
                 </View>
             </View>
         )

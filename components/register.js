@@ -21,8 +21,8 @@ export default class Register extends React.Component {
                 <FormInput />
                 <FormLabel><Text>Username</Text></FormLabel>
                 <FormInput />
-                <FormLabel><Text>Password</Text></FormLabel>
-                <FormInput/>
+                <FormLabel ><Text>Password</Text></FormLabel>
+                <FormInput secureTextEntry = {true}/>
                 <TouchableOpacity onPress = {() =>Actions.home()}><Text>Submit</Text></TouchableOpacity>
             </View>
         )

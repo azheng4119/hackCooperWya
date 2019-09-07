@@ -10,7 +10,7 @@ import Registers from '../pages/register'
 const Routes = (props) => (
    <Router cardStyle={{ backgroundColor: 'white' }}>
       <ScrollView>
-         <Scene type="reset" key="landing" component={Landing} title="Login" initial={true} /> 
+         <Scene type="reset" key="landing" component={Landing} title="Where You At Tho" initial={true} /> 
          <Scene key="map" component={Map} title="Map"  />
          <Scene key="home" component={Home} title ="Home"></Scene> 
          <Scene key="register" component={Registers} title="Sign Up"></Scene>
