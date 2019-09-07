@@ -14,7 +14,7 @@ class roomCard extends React.Component {
             <Container style={{width: 100}}>
             <Header />
             <Content>
-                <View>
+                <View style={{width: 300}}>
                     <Text>Create A Group</Text>
               <TouchableOpacity>
               <Icon name='ios-add-circle-outline' style={{fontSize: 50}}/>
