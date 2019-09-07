@@ -41,8 +41,10 @@ export const loginThunk = (user) => async (dispatch) => {
         console.log(data.user)
     }
     catch (authError) {
-        console.log("hereeeeeeeeeeeeeeee")
-        return dispatch(error(authError));
+        console.log("Error Caught!",authError)
+        let err = { error : "Username or Password is Invalid"};
+        console.log(err, "this is the error returned!")
+        return dispatch(error(err));
     }
 }
 
@@ -50,16 +52,16 @@ export const getUserThunk = () => (dispatch) => {
     dispatch(user());
 }
 
-export default userReducer = (state = [], action) => {
+export default userReducer = (state = {}, action) => {
     switch (action.type) {
         case USER:
             return state;
         case LOGIN:
             return action.payload
         case LOGOUT:
-            return []
+            return {}
         case ERROR:
-            return []
+            return action.payload
         default:
             return state;
     }

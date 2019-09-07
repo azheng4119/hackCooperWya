@@ -16,7 +16,7 @@ class Login extends React.Component {
         }
     }
     async componentDidMount(){
-
+    
     }
     submit = () => {
         const user = {
@@ -36,6 +36,7 @@ class Login extends React.Component {
 
     }
     render() {
+        console.log(this.props.user)
         return (
             <View style={styles.container}>
                 <Text>Wya</Text>
@@ -48,7 +49,7 @@ class Login extends React.Component {
                 <FormInput onChangeText={(text) => this.setState({
                     password: text
                 })} inputStyle={{ width: 200 }} />
-
+                {this.props.user.error ? (<View><Text>{this.props.user.error}</Text></View>) : (<View></View>) }
                 <View style={{ margin: 10, alignItems: 'center', textAlign: 'center' }}>
                     <Button style={{ width: '50%' }}
                         onPress={() => this.submit()}
@@ -76,7 +77,8 @@ const styles = StyleSheet.create({
 
 const mapState = (state) => {
     return {
-        routes: state.user
+        user : state.user,
+        logError: !!state.user.error
     }
 }
 
