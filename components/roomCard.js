@@ -12,7 +12,6 @@ class roomCard extends React.Component {
         return <View>
             <Text>Add A New Group </Text><Button><Text>+</Text></Button>
             <Text>All Current Groups</Text>
-            <TouchableOpacity onPress={() => Actions.map()}><Text>{this.props.code}</Text></TouchableOpacity>
             {this.props.user.groups ?
                         this.props.user.groups.map((eachRoom) => (
                          <View style={styles.container}>

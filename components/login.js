@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapState = (state) => {
+const mapState = (state) => { 
     return {
         user: state.user
     }
