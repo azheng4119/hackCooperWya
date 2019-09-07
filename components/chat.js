@@ -16,7 +16,8 @@ class chat extends React.Component {
         super();
         this.state = {
             chats: [],
-            message: ""
+            message: "",
+            hide: true
 
         }
     }
@@ -36,12 +37,13 @@ class chat extends React.Component {
             }
         })
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this._isMounted = false;
         this.props.getUser();
     }
     sendMessage = (msg) => {
-        let mess = this.props.user.user.firstname+ " " +this.props.user.user.lastname+": "+msg
+        if (msg === "") return;
+        let mess = this.props.user.user.firstname + " " + this.props.user.user.lastname + ": " + msg
         this.socket.emit("chat message", mess);
         if (this._isMounted) {
             this.setState({
@@ -61,17 +63,25 @@ class chat extends React.Component {
         return (
             <KeyboardAvoidingView behavior="padding" enabled style={{ width: '100%' }}>
                 <View style={{ display: 'flex', flexDirection: 'column', width: '100%', paddingBottom: 20 }}>
-                    <ScrollView style={{ padding: 10, alignSelf: 'center', maxHeight: 200, width: '70%', backgroundColor: 'white', borderRadius: 15 }}>{messages}</ScrollView>
+                    {this.state.hide ? <View /> : <View style={{ width: '100%', height: 200 }}><ScrollView style={{ padding: 10, alignSelf: 'center', width: '70%', backgroundColor: 'white', borderRadius: 15 }}>{messages}</ScrollView></View>}
                     <Card>
                         <CardItem>
-                            <Icon name="chat"></Icon>
-                            <FormInput onChangeText={(text) => this.setState({
-                                message: text
-                            })}
-                                onSubmitEditing={() => this.sendMessage(this.state.message)}
-                                inputStyle={{ width: 200 }}
-                                value={this.state.message}></FormInput>
-                            <TouchableOpacity title="SUBMIT" onPress={() => this.sendMessage(this.state.message)}><Text style={{ color: 'blue' }}>Send</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.setState({ hide: !this.state.hide })}>
+                                <Icon name="chat"></Icon>
+                            </TouchableOpacity>
+                            {this.state.hide ? <View></View> :
+                                <View style = {{display :'flex',flexDirection :'row'}}>
+                                    <FormInput
+                                        onChangeText={(text) => this.setState({ message: text })}
+                                        autoCapitalize="none"
+                                        autoCorrect={false}
+                                        onSubmitEditing={() => this.sendMessage(this.state.message)}
+                                        inputStyle={{ width: 200 }}
+                                        value={this.state.message}></FormInput>
+                                    <TouchableOpacity title="SUBMIT" onPress={() => this.sendMessage(this.state.message)}><Text style={{ color: 'blue' }}>Send</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            }
                         </CardItem>
                     </Card>
                 </View>

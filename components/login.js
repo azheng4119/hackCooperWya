@@ -34,27 +34,20 @@ class Login extends React.Component {
         }
     }
 
-    random = () => {
-        try {
-            this.props.getUser();
-            console.log(this.props.user)
-        } catch (err) {
-            console.log(err);
-        }
-
-    }
     render() {
-        console.log(this.props.user)
         return (
             <View style={styles.container}>
                 <Text>Wya</Text>
                 <FormLabel><Text>Username</Text></FormLabel>
-                <FormInput onChangeText={(text) => this.setState({
+                <FormInput autoCapitalize="none" onChangeText={(text) => this.setState({
                     username: text
                 })} inputStyle={{ width: 200 }} />
 
                 <FormLabel><Text>Password</Text></FormLabel>
-                <FormInput onChangeText={(text) => this.setState({
+                <FormInput 
+                onSubmitEditing={() => this.submit()}
+                autoCapitalize="none" 
+                onChangeText={(text) => this.setState({
                     password: text
                 })} inputStyle={{ width: 200 }} />
                 {this.props.user.error ? (<View><Text>{this.props.user.error}</Text></View>) : (<View></View>) }

@@ -13,7 +13,6 @@ export default class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <Login></Login>
-                <Chat></Chat>
             </View>
         )
     }
