@@ -12,7 +12,7 @@ const Routes = (props) => (
       <ScrollView>
          <Scene type="reset" key="landing" component={Landing} title="Login" initial={true} /> 
          <Scene key="map" component={Map} title="Map"  />
-         <Scene key="home" component={Home} title ="Home"></Scene> 
+         <Scene key="home" component={Home} title ="Dashboard"></Scene> 
          <Scene key="register" component={Registers} title="Sign Up"></Scene>
       </ScrollView>
    </Router>
