@@ -1,12 +1,13 @@
 import React from 'react'
 import { Text, View,TouchableOpacity, StyleSheet} from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import RoomCard from '../components/roomCard';
 
 
 export default class Home extends React.Component {
     render() {
         return <View style = {styles.container}>
-            <TouchableOpacity onPress={()=>Actions.map()}><Text>This is home</Text></TouchableOpacity>
+            <RoomCard code = "123"></RoomCard>
         </View>
 
     }
@@ -14,9 +15,9 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection : 'column'
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
 });
