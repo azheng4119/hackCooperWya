@@ -39,7 +39,7 @@ class Home extends React.Component {
                     <Text>{this._isMounted? this.state.user.user.firstname + " " + this.state.user.user.lastname: ""} </Text>
                 </View>
                 </View>
-                <View>
+                <View style={{width:'100%'}}>
                     <RoomCard code="123"></RoomCard>
                 </View>
             </View>
