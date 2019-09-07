@@ -24,8 +24,10 @@ class Login extends React.Component {
                 "username": this.state.username,
                 "password": this.state.password
             }
-            this.props.login(user);
-            Actions.home();
+            await this.props.login(user);
+            if(this.props.user.token){
+                Actions.home();
+            }
         }
         catch (err) {
             console.log(err)

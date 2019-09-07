@@ -37,8 +37,7 @@ export const logOutThunk = () => (dispatch) => {
 export const loginThunk = (user) => async (dispatch) => {
     try {
         let { data } = await axios.post(`https://wya-api.herokuapp.com/user/login`, user)
-        dispatch(logIn(data.user));
-        console.log(data.user)
+        dispatch(logIn(data));
     }
     catch (authError) {
         console.log("Error Caught!",authError)
