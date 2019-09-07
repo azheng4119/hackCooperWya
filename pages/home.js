@@ -1,19 +1,47 @@
 import React from 'react'
-import { Text, View,TouchableOpacity, StyleSheet} from 'react-native'
-import { Actions } from 'react-native-router-flux'
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { Card, CardItem, Thumbnail, Left, Body } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 import RoomCard from '../components/roomCard';
-import axios from 'axios';
+import { connect } from "react-redux";
+import { getUserThunk } from '../store/utilities/currentuser';
 
-
-export default class Home extends React.Component {
-    componentDidMount = async () =>{
-        
+class Home extends React.Component {
+    _isMounted = false;
+    constructor(props) {
+		super(props)
+		this.state = {
+            user: {}
+		}
+	}
+    async componentDidMount() {
+        this._isMounted = true;
+        try {
+            await this.props.getUser();
+            if(this._isMounted){
+                this.setState({
+                    user:this.props.user
+                })
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
+    componentWillUnmount() {
+		this._isMounted = false;
+	}
     render() {
-        return <View style = {styles.container}>
-            <RoomCard code = "123"></RoomCard>
-        </View>
-
+        return (
+            <View style={styles.container}>
+                <View style={styles.avatarCard}>
+                    <Image style={styles.avatar} source={require('../assets/pikachu.png')} />
+                    <Text>{this._isMounted? this.state.user.user.firstname + " " + this.state.user.user.lastname: ""} </Text>
+                </View>
+                <View>
+                    <RoomCard code="123"></RoomCard>
+                </View>
+            </View>
+        )
     }
 }
 
@@ -24,4 +52,31 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center'
     },
+    avatarCard: {
+        marginTop: 5,
+        width : '60%',
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
+    avatar: {
+        width: 70,
+        height: 70,
+        overflow: "hidden",
+        borderRadius: 35,
+    }
 });
+
+const mapState = (state) => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatch = (dispatch) => {
+    return {
+        getUser: () => dispatch(getUserThunk())
+    }
+}
+
+export default connect(mapState, mapDispatch)(Home);
